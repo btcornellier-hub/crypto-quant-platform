@@ -11,7 +11,6 @@ Every material decision is recorded here: date, decision, rationale, and who app
 | D3 | ~~BTC/ETH-only universe~~ | — | **Superseded by D8** |
 | D4 | ~~Coinbase as primary exchange~~ | — | **Superseded by D7 (Kraken)** |
 | D5 | ~~Three-way data split~~ | — | **Superseded:** fast path uses dev 2021–2023 / out-of-sample 2024–Oct 2026 (see TRIAL_LOG) |
-| D9 | Should TrendTwoSleeve v2 start 30-day paper trading on a cloud server? | Yes; it needs a DigitalOcean account and a Telegram bot | _pending_ |
 | D10 | Should we go live with $250–500 after 30 clean paper days? | Decide after the paper results | _pending_ |
 
 ## Decided
@@ -27,3 +26,4 @@ Every material decision is recorded here: date, decision, rationale, and who app
 | 2026-11-25 | D2 | Primary yardstick: beat BTC/ETH buy-and-hold and cash after costs; recommend passive investing if not | Owner proceeded on this basis | Owner (implicit) |
 | 2026-11-25 | — | Owner resides in **Florida**; Kraken excludes only ME and NY | Exchange eligibility | Owner |
 | 2026-11-25 | — | Paper-trading period shortened to ≥30 days (from 90) for the fast path; live pilot capped at $250–500 | Owner timeline; the small pilot is the real test | Owner |
+| 2026-11-25 | D9 | Start ≥30-day paper trading of TrendTwoSleeve v2 ($5,000 simulated) on a DigitalOcean server | Owner said "yes, let's start" | Owner |

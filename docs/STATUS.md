@@ -16,7 +16,7 @@
 2. DigitalOcean account (≈$12/mo server) — for 24/7 paper trading
 3. Telegram bot token (created on your phone via @BotFather), entered **on the server**, never in chat
 4. Tailscale account (private phone access to the dashboard)
-5. Decision D9 (start paper trading)
+5. ~~Decision D9~~ approved — follow `docs/DEPLOY.md`
 
 ## Next
 - Deploy to the server; run paper trading ≥30 days; weekly review against BTC buy-and-hold
