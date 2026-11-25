@@ -1,7 +1,7 @@
 # Current Status
 
 **Phase:** Fast path. Strategy v2 is built and backtested; waiting on the cloud server for paper trading.
-**Last updated:** 2026-11-25
+**Last updated:** 2026-11-25 (paused mid-deployment)
 **Live trading:** DISABLED (`dry_run: true`) · **Paper trading:** smoke-tested OK on live Kraken data; not yet running 24/7 · **Capital at risk:** $0
 
 ## Done
@@ -11,12 +11,13 @@
 - Backtests + benchmarks: see `docs/TRIAL_LOG.md`
 - Docker deployment file, secrets template, paper-mode smoke test passed
 
-## Blocked on owner
-1. GitHub private repo (to save the code off this temporary workspace)
-2. DigitalOcean account (≈$12/mo server) — for 24/7 paper trading
-3. Telegram bot token (created on your phone via @BotFather), entered **on the server**, never in chat
-4. Tailscale account (private phone access to the dashboard)
-5. ~~Decision D9~~ approved — follow `docs/DEPLOY.md`
+## Deployment progress (paused 2026-11-25 at the owner's request)
+- [x] GitHub private repo: btcornellier-hub/crypto-quant-platform (code pushed)
+- [x] Telegram bot created (`@btc_trend_paper_bot`); token re-issued after accidental exposure; stored by the owner, not in chat
+- [x] Tailscale account (Google sign-in) on phone + desktop
+- [x] DigitalOcean account created
+- [ ] **Resume here:** create droplet (Ubuntu 24.04, Basic $12/mo, NYC, password auth, backups on, hostname `crypto-bot`), then follow `docs/DEPLOY.md` step E
+- Owner uses Windows desktop + iPhone; walk through each screen
 
 ## Next
 - Deploy to the server; run paper trading ≥30 days; weekly review against BTC buy-and-hold
