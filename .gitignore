@@ -1,0 +1,18 @@
+# Secrets — never commit
+.env
+*.env
+secrets/
+*.pem
+*.key
+
+# Data & outputs
+data/
+reports/output/
+*.parquet
+*.sqlite
+
+# Python
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
