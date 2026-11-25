@@ -16,3 +16,8 @@ __pycache__/
 .venv/
 *.pyc
 .pytest_cache/
+user_data/config.sandbox.json
+user_data/backtest_results/
+user_data/config.private.json
+user_data/logs/
+user_data/*.sqlite*

@@ -4,6 +4,8 @@
 
 > **How to read this document.** Each section answers one of the twelve first-assignment questions. Where a fact comes from an outside source, the source is listed in §13. Fee figures marked **[VERIFY]** came from secondary sources. They must be confirmed inside your own exchange account before we rely on them.
 
+> **Update 2026-11-25:** the owner chose a fast path (D7: Freqtrade on Kraken; D8: meme sleeve ≤25%). Sections 3, 5 and 10 are superseded where they conflict. See `STATUS.md` and `TRIAL_LOG.md`.
+
 ---
 
 ## 1. Independent feasibility assessment

@@ -1,28 +1,29 @@
 # Current Status
 
-**Phase:** 0 — Assessment (awaiting owner decisions)
+**Phase:** Fast path. Strategy v2 is built and backtested; waiting on the cloud server for paper trading.
 **Last updated:** 2026-11-25
-**Live trading:** DISABLED · **Paper trading:** not started · **Capital at risk:** $0
+**Live trading:** DISABLED (`dry_run: true`) · **Paper trading:** smoke-tested OK on live Kraken data; not yet running 24/7 · **Capital at risk:** $0
 
 ## Done
-- Phase 0 assessment written (`docs/ASSESSMENT.md`)
-- Repository skeleton, `.gitignore` (blocks secrets and data files)
+- Phase 0 assessment (`docs/ASSESSMENT.md`). Its custom-build recommendation is superseded by D7 (Freqtrade + Kraken).
+- Freqtrade 2026.10 installed; strategy `user_data/strategies/TrendTwoSleeve.py` (v2)
+- Price history 2020 → Oct 2026 for 10 coins (`tools/fetch_history.py`)
+- Backtests + benchmarks: see `docs/TRIAL_LOG.md`
+- Docker deployment file, secrets template, paper-mode smoke test passed
 
 ## Blocked on owner
-- Decisions D1–D6 (`docs/DECISION_LOG.md`)
-- Private GitHub repository + connection to Claude Code
-- Actual Coinbase maker/taker fee tier (read from the logged-in fee page)
-- US state of residence (affects exchange availability)
-- Approval for the cloud workspace to reach Coinbase's public market-data API
+1. GitHub private repo (to save the code off this temporary workspace)
+2. DigitalOcean account (≈$12/mo server) — for 24/7 paper trading
+3. Telegram bot token (created on your phone via @BotFather), entered **on the server**, never in chat
+4. Tailscale account (private phone access to the dashboard)
+5. Decision D9 (start paper trading)
 
-## Next (Milestone 1: Data & benchmarks)
-1. Project structure, Python environment, test harness
-2. Coinbase public candle downloader (BTC-USD, ETH-USD; daily + hourly)
-3. Data quality checks + report
-4. Cost model; backtest engine core with look-ahead protection
-5. Benchmark scorecard report; trial registry; locked holdout
+## Next
+- Deploy to the server; run paper trading ≥30 days; weekly review against BTC buy-and-hold
+- Prepare the live-pilot checklist: Kraken account, trade-only API key with IP restriction, `stoploss_on_exchange`
 
-## Known limitations / open questions
-- Fee figures are from secondary sources and must be verified in-account
-- freqtrade.io, help.coinbase.com and exchange APIs were unreachable from the current cloud environment
-- Survivorship bias is unavoidable for any altcoin universe; this is mitigated by starting with BTC/ETH only
+## Known limitations
+- Backtests used Binance USDT prices as a proxy for Kraken USD prices
+- Results depend on a handful of very large trades; not statistically significant (p ≈ 0.4)
+- After-tax comparison not yet modeled (all strategy gains are short-term)
+- The out-of-sample period is now used up; paper and live trading are the only fresh evidence

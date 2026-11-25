@@ -1,0 +1,66 @@
+{
+  "$comment": "PAPER TRADING CONFIG. dry_run must stay true until the owner approves live trading in docs/DECISION_LOG.md. API keys are NEVER stored in this file; they go in a separate private file on the server.",
+  "bot_name": "trend-two-sleeve-v2",
+  "dry_run": true,
+  "dry_run_wallet": 5000,
+  "stake_currency": "USD",
+  "stake_amount": "unlimited",
+  "tradable_balance_ratio": 0.99,
+  "max_open_trades": 7,
+  "timeframe": "1d",
+  "cancel_open_orders_on_exit": false,
+  "unfilledtimeout": {
+    "entry": 30,
+    "exit": 30,
+    "unit": "minutes"
+  },
+  "entry_pricing": {
+    "price_side": "other",
+    "use_order_book": true,
+    "order_book_top": 1,
+    "price_last_balance": 0.0
+  },
+  "exit_pricing": {
+    "price_side": "other",
+    "use_order_book": true,
+    "order_book_top": 1
+  },
+  "order_types": {
+    "entry": "limit",
+    "exit": "limit",
+    "emergency_exit": "market",
+    "force_exit": "market",
+    "force_entry": "market",
+    "stoploss": "market",
+    "stoploss_on_exchange": false
+  },
+  "exchange": {
+    "name": "kraken",
+    "key": "",
+    "secret": "",
+    "ccxt_config": {},
+    "ccxt_async_config": {},
+    "pair_whitelist": [
+      "BTC/USD",
+      "ETH/USD",
+      "SOL/USD",
+      "XRP/USD",
+      "DOGE/USD",
+      "PEPE/USD",
+      "SHIB/USD",
+      "BONK/USD",
+      "PENGU/USD",
+      "TRUMP/USD"
+    ],
+    "pair_blacklist": []
+  },
+  "pairlists": [
+    {
+      "method": "StaticPairList"
+    }
+  ],
+  "initial_state": "running",
+  "internals": {
+    "process_throttle_secs": 30
+  }
+}

@@ -1,0 +1,19 @@
+# Runs the bot 24/7 on the cloud server. Restarts automatically after crashes or reboots.
+# Paper trading by default (dry_run: true in user_data/config.json).
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:2026.10
+    restart: unless-stopped
+    container_name: freqtrade
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    # Dashboard is bound to localhost only; reach it privately through Tailscale, never the open internet.
+    ports:
+      - "127.0.0.1:8080:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --db-url sqlite:////freqtrade/user_data/tradesv3.dryrun.sqlite
+      --config /freqtrade/user_data/config.json
+      --config /freqtrade/user_data/config.private.json
+      --strategy TrendTwoSleeve
