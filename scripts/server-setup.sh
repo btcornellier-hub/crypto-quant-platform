@@ -83,6 +83,7 @@ if [ ! -f "$PRIV" ]; then
   echo "Dashboard username: $DASH_USER"
   echo "Dashboard password: $DASH_PASS"
   echo ">>> Save this password in your password manager NOW. It will not be shown again. <<<"
+  echo "    To copy: highlight it with the mouse, then right-click > Copy. Do NOT press Ctrl+C (that cancels setup)."
   read -rp "Press Enter once it's saved... " _
 else
   echo "Private settings already exist; leaving them unchanged."
