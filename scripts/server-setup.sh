@@ -45,6 +45,7 @@ if [ ! -f "$PRIV" ]; then
   while true; do
     read -rsp "Paste your Telegram bot token (from @BotFather; input is hidden), then press Enter: " TG_TOKEN; echo
     # strip spaces, line breaks and invisible paste characters; keep only characters a token can contain
+    TG_TOKEN=${TG_TOKEN//$'\e[200~'/}; TG_TOKEN=${TG_TOKEN//$'\e[201~'/}   # browser-console paste markers
     TG_TOKEN=$(printf '%s' "$TG_TOKEN" | tr -cd 'A-Za-z0-9:_-')
     if ! printf '%s' "$TG_TOKEN" | grep -Eq '^[0-9]{6,}:[A-Za-z0-9_-]{30,}$'; then
       echo "That doesn't look like a complete token (received ${#TG_TOKEN} characters). Please paste it again."
