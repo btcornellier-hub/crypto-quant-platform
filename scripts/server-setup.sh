@@ -42,11 +42,31 @@ fi
 
 say "5/7 Private settings (Telegram + dashboard login). These stay on this server only."
 if [ ! -f "$PRIV" ]; then
-  read -rsp "Paste your Telegram bot token (from @BotFather; input is hidden), then press Enter: " TG_TOKEN; echo
-  echo "Now open Telegram, find your new bot, and send it any message (e.g. 'hi')."
-  read -rp "Press Enter after you've sent the message... " _
-  CHAT_ID=$(curl -fsS "https://api.telegram.org/bot${TG_TOKEN}/getUpdates" | jq -r '.result[-1].message.chat.id // empty')
-  [ -n "$CHAT_ID" ] || { echo "Couldn't find your message. Send the bot a message and re-run this script."; exit 1; }
+  while true; do
+    read -rsp "Paste your Telegram bot token (from @BotFather; input is hidden), then press Enter: " TG_TOKEN; echo
+    # strip spaces, line breaks and invisible paste characters; keep only characters a token can contain
+    TG_TOKEN=$(printf '%s' "$TG_TOKEN" | tr -cd 'A-Za-z0-9:_-')
+    if ! printf '%s' "$TG_TOKEN" | grep -Eq '^[0-9]{6,}:[A-Za-z0-9_-]{30,}$'; then
+      echo "That doesn't look like a complete token (received ${#TG_TOKEN} characters). Please paste it again."
+      continue
+    fi
+    BOT_NAME=$(curl -sS "https://api.telegram.org/bot${TG_TOKEN}/getMe" | jq -r '.result.username // empty')
+    if [ -z "$BOT_NAME" ]; then
+      echo "Telegram rejected that token (old or mistyped?). Copy the NEWEST token from BotFather and try again."
+      continue
+    fi
+    echo "Token accepted for @${BOT_NAME}."
+    break
+  done
+  while true; do
+    echo "Now send @${BOT_NAME} any message in Telegram (e.g. 'hi')."
+    read -rp "Press Enter after you've sent the message... " _
+    CHAT_ID=$(curl -sS "https://api.telegram.org/bot${TG_TOKEN}/getUpdates" | jq -r '[.result[] | .message.chat.id // empty] | last // empty')
+    [ -n "$CHAT_ID" ] && break
+    echo "No message found yet. Make sure you messaged @${BOT_NAME} (not BotFather), then try again."
+  done
+  curl -sS "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${CHAT_ID}" \
+       --data-urlencode "text=Connected to crypto-bot server. Paper trading setup in progress." >/dev/null || true
   DASH_USER=owner
   DASH_PASS=$(openssl rand -base64 18 | tr -d '/+=')
   jq -n --arg t "$TG_TOKEN" --arg c "$CHAT_ID" --arg u "$DASH_USER" --arg p "$DASH_PASS" \
