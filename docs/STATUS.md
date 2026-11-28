@@ -15,8 +15,10 @@
 - Bot `TrendTwoSleeve v2` running in Docker on DigitalOcean `crypto-bot` (dry run, $5,000 simulated, live Kraken prices)
 - Telegram `@btc_trend_paper_bot` responding (`/status` OK on 2026-11-28)
 - Earliest live-pilot review: **2026-12-28** (≥30 days), only with explicit owner approval (D10)
-- [ ] Confirm dashboard is published (`tailscale serve --bg 8080`) after enabling Serve in the Tailscale admin
-- [ ] Rotate the dashboard password (`scripts/reset-dashboard-password.sh`); the first one appeared in a screenshot
+- [x] Dashboard live at https://crypto-bot.taile8eb4e.ts.net (Tailscale-only); owner logged in 2026-11-28; shows Dry, 0/7 trades, 4,950 USD tradable
+- [x] Dashboard password rotated (owner asked to rotate once more because the second one also appeared in a screenshot)
+- [ ] Optional: build a watchdog (Healthchecks.io + container check) and a weekly Telegram report vs BTC buy-and-hold
+- [ ] Add the iPhone to Tailscale; owner may start Kraken account verification early
 - Console tips: `bind 'set enable-bracketed-paste off'` in each new console; never press Ctrl+C to copy
 
 ## Next
