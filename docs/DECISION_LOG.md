@@ -27,3 +27,4 @@ Every material decision is recorded here: date, decision, rationale, and who app
 | 2026-11-25 | — | Owner resides in **Florida**; Kraken excludes only ME and NY | Exchange eligibility | Owner |
 | 2026-11-25 | — | Paper-trading period shortened to ≥30 days (from 90) for the fast path; live pilot capped at $250–500 | Owner timeline; the small pilot is the real test | Owner |
 | 2026-11-25 | D9 | Start ≥30-day paper trading of TrendTwoSleeve v2 ($5,000 simulated) on a DigitalOcean server | Owner said "yes, let's start" | Owner |
+| 2026-11-28 | — | Paper trading of TrendTwoSleeve v2 started on the server; parameters frozen for the evaluation period | Execution of D9 | Owner |
